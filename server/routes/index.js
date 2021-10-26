@@ -14,4 +14,16 @@ router.get('/', (req, res, next) => {
    });
 });
 
+/* GET home page. wildcard */
+router.get('*/*/error', (req, res, next) => {
+  res.render('error', {
+    title: "An error happend! :(",
+    message: 'Error',
+    error:{
+      status: "404",
+      stack: 'error statck'
+    }
+   });
+});
+
 module.exports = router;

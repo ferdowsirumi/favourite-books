@@ -21,7 +21,6 @@ router.get('/', (req, res, next) => {
       });
     }
   });
-
 });
 
 //  GET the Book Details page in order to add a new Book
@@ -94,8 +93,7 @@ router.post('/:id', (req, res, next) => {
         "Description": req.body.description,
         "Price": req.body.price,
         "Author": req.body.author,
-        "Genre": req.body.genre,
-
+        "Genre": req.body.genre
     });
 
     books.updateOne({ _id: id }, updatedItem, {}, (err) => {
@@ -107,7 +105,6 @@ router.post('/:id', (req, res, next) => {
 
         res.redirect('/books');
     })
-
 });
 
 // GET - process the delete by user id
