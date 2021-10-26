@@ -41,6 +41,21 @@ router.post('/add', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    let newItem = new books({
+      "Title": req.body.title,
+      "Description": req.body.description,
+      "Price": req.body.price,
+      "Author": req.body.author,
+      "Genre": req.body.genre,
+  });
+
+  books.create(newItem, (err) => {
+      if (err) {
+          console.error(err);
+          res.end(err);
+      };
+      res.redirect('/books');
+  })
 
 });
 
@@ -101,6 +116,16 @@ router.get('/delete/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    let id = req.params.id;
+
+    books.remove({ _id: id }, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+
+        res.redirect('/books');
+    })
 });
 
 
